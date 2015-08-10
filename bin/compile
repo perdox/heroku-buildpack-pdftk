@@ -1,15 +1,7 @@
-#!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir>
+#!/usr/bin/env ruby
+# sync output
+$stdout.sync = true
 
-echo "-----> Installing PDFTK"
-
-# change to the the BUILD_DIR ($1)
-cd $1
-
-# download the mruby binary (-O) silently (-s)
-package="https://s3-us-west-2.amazonaws.com/noaapp/pdftk.tar.gz"
-curl $package -s -O
-# make a directory to untar (like unzip) the binary
-mkdir -p vendor/pdftk/bin/pdftk
-# untar the binary to the directory we want
-tar -xf pdftk.tar.gz -C vendor/pdftk/bin/pdftk
+$:.unshift File.expand_path("../../lib", __FILE__)
+require "base_custom"
+BaseCustom.compile(ARGV[0], ARGV[1])

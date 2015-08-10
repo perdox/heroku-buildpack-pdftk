@@ -10,7 +10,7 @@ cd $1
 package="https://s3-us-west-2.amazonaws.com/noaapp/pdftk.pkg.zip"
 curl $package -s -O
 # make a directory to untar (like unzip) the binary
-mkdir -p pdftk
+mkdir -p /vendor/pdftk/bin/pdftk
 # untar the binary to the directory we want
-tar -xf /pdftk.pkg.zip -C /vendor/pdftk/bin/pdftk
+tar -xf pdftk.pkg.zip -C /vendor/pdftk/bin/pdftk
 ls
